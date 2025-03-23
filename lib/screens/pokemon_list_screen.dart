@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:pokemon_app/blocs/pokemon_block.dart';
+import 'package:pokemon_app/bloc/pokemon_bloc.dart';
 import 'package:pokemon_app/widgets/pokemon_list.item.dart';
-import '../blocs/pokemon_event.dart';
-import '../blocs/pokemon_state.dart';
+import '../bloc/pokemon_event.dart';
+import '../bloc/pokemon_state.dart';
 
 /// Pantalla que muestra la lista de Pokémon.
 class PokemonListScreen extends StatefulWidget {

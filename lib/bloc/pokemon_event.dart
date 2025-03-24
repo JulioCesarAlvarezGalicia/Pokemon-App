@@ -1,5 +1,14 @@
-/// Evento base para manejar acciones relacionadas con Pokémon.
-abstract class PokemonEvent {}
+import 'package:equatable/equatable.dart';
 
-/// Evento que indica que se deben cargar más Pokémon.
-class FetchPokemonsEvent extends PokemonEvent {}
+abstract class PokemonEvent extends Equatable {
+  const PokemonEvent();
+
+  @override
+  List<Object?> get props => [];
+}
+
+/// Evento para cargar la lista inicial de Pokémon
+class FetchPokemon extends PokemonEvent {}
+
+/// Evento para cargar más Pokémon al hacer scroll
+class FetchMorePokemon extends PokemonEvent {}

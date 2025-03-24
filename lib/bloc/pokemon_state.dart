@@ -1,22 +1,43 @@
-import '../models/pokemon_model.dart';
+import 'package:equatable/equatable.dart';
+import 'package:pokemon_app/models/pokemon_model.dart'; 
 
-/// Estado base del Bloc de Pokémon.
-abstract class PokemonState {}
+abstract class PokemonState extends Equatable {
+  const PokemonState();
 
-/// Estado inicial: aún no se ha cargado nada.
-class PokemonInitial extends PokemonState {}
-
-/// Estado mientras se están cargando los datos.
-class PokemonLoading extends PokemonState {}
-
-/// Estado cuando los datos se cargaron correctamente.
-class PokemonLoaded extends PokemonState {
-  final List<Pokemon> pokemons;
-  PokemonLoaded(this.pokemons);
+  @override
+  List<Object?> get props => [];
 }
 
-/// Estado cuando ocurrió un error.
+/// Estado inicial al abrir la app
+class PokemonInitial extends PokemonState {}
+
+/// Estado cuando se están cargando datos
+class PokemonLoading extends PokemonState {
+  final List<Pokemon> previousPokemons; // Guardamos la lista previa mientras carga más
+
+  const PokemonLoading(this.previousPokemons);
+
+  @override
+  List<Object?> get props => [previousPokemons];
+}
+
+/// Estado cuando los datos se han cargado correctamente
+class PokemonLoaded extends PokemonState {
+  final List<Pokemon> pokemons; // Lista de Pokémon actuales
+  final bool hasReachedEnd;     // Indica si ya no hay más Pokémon por cargar
+
+  const PokemonLoaded(this.pokemons, this.hasReachedEnd);
+
+  @override
+  List<Object?> get props => [pokemons, hasReachedEnd];
+}
+
+/// Estado cuando ocurre un error al cargar
 class PokemonError extends PokemonState {
   final String message;
-  PokemonError(this.message);
+
+  const PokemonError(this.message);
+
+  @override
+  List<Object?> get props => [message];
 }

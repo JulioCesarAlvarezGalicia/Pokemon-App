@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import '../models/pokemon_model.dart';
+import 'package:pokemon_app/models/pokemon_model.dart';
 
-/// Widget que muestra la información de un solo Pokémon.
 class PokemonListItem extends StatelessWidget {
   final Pokemon pokemon;
 
@@ -9,10 +8,15 @@ class PokemonListItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final types = pokemon.types.map((e) => e.type.name).join(', ');
+
     return ListTile(
-      leading: Image.network(pokemon.imageUrl),
-      title: Text(pokemon.name),
-      subtitle: Text('Type: ${pokemon.types.join(', ')}'),
+      leading: Image.network(pokemon.sprites.frontDefault),
+      title: Text(
+        pokemon.name.toUpperCase(),
+        style: const TextStyle(fontWeight: FontWeight.bold),
+      ),
+      subtitle: Text('Type(s): $types'),
     );
   }
 }

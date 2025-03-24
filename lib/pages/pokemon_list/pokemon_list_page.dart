@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:pokemon_app/bloc/pokemon_bloc.dart';
-import 'package:pokemon_app/bloc/pokemon_event.dart';
-import 'package:pokemon_app/bloc/pokemon_state.dart';
+import 'package:pokemon_app/pages/pokemon_list/bloc/pokemon_list_bloc.dart';
+import 'package:pokemon_app/pages/pokemon_list/bloc/pokemon_list_event.dart';
+import 'package:pokemon_app/pages/pokemon_list/bloc/pokemon_list_state.dart';
 import 'package:pokemon_app/repositories/pokemon_repository.dart';
 import 'package:pokemon_app/widgets/pokemon_list.item.dart';
 
@@ -11,7 +11,6 @@ class PokemonListScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Aquí inyectamos el Bloc de forma segura, asegurándonos de que el repositorio ya exista en el contexto
     return BlocProvider(
       create: (context) => PokemonBloc(context.read<PokemonRepository>())..add(FetchPokemon()),
       child: const PokemonListView(),

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pokemon_app/repositories/pokemon_repository.dart';
-import 'package:pokemon_app/screens/pokemon_list_screen.dart';
+import 'package:pokemon_app/pages/pokemon_list/pokemon_list_page.dart';
 
 void main() {
   runApp(const MyApp());

@@ -1,8 +1,8 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pokemon_app/models/pokemon_model.dart';
-import '../repositories/pokemon_repository.dart';
-import 'pokemon_event.dart';
-import 'pokemon_state.dart';
+import '../../../repositories/pokemon_repository.dart';
+import 'pokemon_list_event.dart';
+import 'pokemon_list_state.dart';
 
 class PokemonBloc extends Bloc<PokemonEvent, PokemonState> {
   final PokemonRepository repository;

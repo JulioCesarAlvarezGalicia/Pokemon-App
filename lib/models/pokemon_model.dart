@@ -2,72 +2,72 @@
 //
 //     final pokemon = pokemonFromJson(jsonString);
 
-import 'dart:convert';
+import 'dart:convert';  //Paquete que importa herramientas para convertir datos en formato JSON a objetos dart
 
-Pokemon pokemonFromJson(String str) => Pokemon.fromJson(json.decode(str));
+Pokemon pokemonFromJson(String str) => Pokemon.fromJson(json.decode(str)); //funcion que convierte de formato JSON a un objeto de tipo Pokemon
 
-String pokemonToJson(Pokemon data) => json.encode(data.toJson());
+String pokemonToJson(Pokemon data) => json.encode(data.toJson()); //funcion que convierte un objeto de tipo Pokemon a JSON
 
-class Pokemon {
+class Pokemon { //clase pokemon
     String name;
     Sprites sprites;
     List<TypeElement> types;
 
-    Pokemon({
+    Pokemon({ //constructor de la clase pokemon
         required this.name,
         required this.sprites,
         required this.types,
     });
 
-    factory Pokemon.fromJson(Map<String, dynamic> json) => Pokemon(
+    factory Pokemon.fromJson(Map<String, dynamic> json) => Pokemon( //funcion para convertir un mapa JSON a un objeto de tipo Pokemon
         name: json["name"],
         sprites: Sprites.fromJson(json["sprites"]),
         types: List<TypeElement>.from(json["types"].map((x) => TypeElement.fromJson(x))),
     );
 
-    Map<String, dynamic> toJson() => {
+    Map<String, dynamic> toJson() => { //funcion para convertir un objeto de tipo Pokemon a JSON
         "name": name,
         "sprites": sprites.toJson(),
         "types": List<dynamic>.from(types.map((x) => x.toJson())),
     };
 }
 
-class Sprites {
+class Sprites { //clase Sprites (imagenes)
     String frontDefault;
 
-    Sprites({
+    Sprites({ //constructor de la clase Sprite
         required this.frontDefault,
     });
 
-    factory Sprites.fromJson(Map<String, dynamic> json) => Sprites(
+    factory Sprites.fromJson(Map<String, dynamic> json) => Sprites( //funcion para convertir un mapa JSON a un objeto de tipo Sprite
         frontDefault: json["front_default"],
     );
 
-    Map<String, dynamic> toJson() => {
+    Map<String, dynamic> toJson() => { //funcion para convertir un objeto de tipo Sprite a JSON
         "front_default": frontDefault,
     };
 }
 
-class TypeElement {
+class TypeElement { //clase TypeElement para el tipo de elemento del pokemon
     TypeType type;
 
-    TypeElement({
+    TypeElement({ //constructor de la clase TypeElement
         required this.type,
     });
 
-    factory TypeElement.fromJson(Map<String, dynamic> json) => TypeElement(
+    factory TypeElement.fromJson(Map<String, dynamic> json) => TypeElement(//funcion para convertir un mapa JSON a un objeto de tipo TypeElement
         type: TypeType.fromJson(json["type"]),
     );
 
-    Map<String, dynamic> toJson() => {
+    Map<String, dynamic> toJson() => { //funcion para convertir un objeto de tipo TypeElement a JSON
         "type": type.toJson(),
     };
 }
 
-class TypeType {
+class TypeType { //clase TypeType para el tipo del pokemon
     String name;
 
-    TypeType({
+    TypeType({ //constructor de la clase TypeType
         required this.name,
     });
 

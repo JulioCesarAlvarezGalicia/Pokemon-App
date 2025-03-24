@@ -1,5 +1,5 @@
-import 'package:equatable/equatable.dart';
-import 'package:pokemon_app/models/pokemon_model.dart'; 
+import 'package:equatable/equatable.dart'; //Paquete que permite el uso de equatable para para evitar redibujar en caso de no cambiar el evento
+import 'package:pokemon_app/models/pokemon_model.dart'; //paquete con la definicion de la estructura de como luce un pokemon
 
 abstract class PokemonState extends Equatable {
   const PokemonState();
